@@ -9,10 +9,10 @@
 
 # Configuration Variables
 TARGET_HOST="user@host:/target/directory"  # Target host and directory
+TIMESTAMP_FILE="/tmp/move-d.ts"            # Temp. file to store last sync timestamp
 SSH_KEY="/path/to/ssh/key"                 # Path to your SSH private key
 SSH_PORT=22                                # Custom SSH port
 SLEEP_INTERVAL=10                          # Time interval between checks (in seconds)
-TIMESTAMP_FILE="/tmp/move-d.ts"            # Temp. file to store last sync timestamp
 
 
 # Initialize the timestamp file with the current time if it doesn't exist
