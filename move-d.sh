@@ -1,19 +1,26 @@
 #!/bin/bash
 
 # Title: move-d.sh
-# Description: Move new files from current directory to a remote server.
-# Usage: (From inside the directory to be synced) run: ./move-d.sh 
 # Dependencies: find, rsync
-# Version: 0.1
+# Description: Watch for new files in a source directory and move to a remote server. 
+# Version: 0.2
 # License: MIT
 
 # Configuration Variables
+SOURCE_DIR="/source/directory"             # Source directory to watch
 TARGET_HOST="user@host:/target/directory"  # Target host and directory
 TIMESTAMP_FILE="/tmp/move-d.ts"            # Temp. file to store last sync timestamp
 SSH_KEY="/path/to/ssh/key"                 # Path to your SSH private key
 SSH_PORT=22                                # Custom SSH port
 SLEEP_INTERVAL=10                          # Time interval between checks (in seconds)
 
+# Create the source directory if it doesn't exist
+if [ ! -d "$SOURCE_DIR" ]; then
+  mkdir -p "$SOURCE_DIR"
+fi
+
+# Move to the source directory
+cd "$SOURCE_DIR"
 
 # Initialize the timestamp file with the current time if it doesn't exist
 if [ ! -f "$TIMESTAMP_FILE" ]; then
