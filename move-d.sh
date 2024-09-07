@@ -3,6 +3,7 @@
 # Title: move-d.sh
 # Dependencies: find, rsync
 # Description: Watch for new files in a source directory and move to a remote server. 
+# To run script in persistently in the background run: `nohup ./move-d.sh > /dev/null 2>&1 &`
 # Version: 0.2
 # License: MIT
 
