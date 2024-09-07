@@ -26,12 +26,12 @@ while true; do
   # Get the last sync timestamp
   LAST_SYNC=$(cat "$TIMESTAMP_FILE")
 
-  # Find files modified since the last sync
-  MODIFIED_FILES=$(find ./ -type f -newermt "@$LAST_SYNC")
-
   # Update the timestamp for the next iteration
   CURRENT_TIME=$(date +%s)
   echo "$CURRENT_TIME" > "$TIMESTAMP_FILE"
+
+  # Find files modified since the last sync
+  MODIFIED_FILES=$(find ./ -type f -newermt "@$LAST_SYNC")
 
   # Sync only if there are modified files
   if [ -n "$MODIFIED_FILES" ]; then
